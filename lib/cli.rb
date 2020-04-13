@@ -60,11 +60,23 @@ class Cli
 
         case selection
         when "New Music"
-            create_event
+            new_music
         when "Preexisting Music"
-            view_calendar
+            preexisting_music
         when "Clear Music Tastes"
-            delete_event
+            clear_music
         end
+    end
+
+    def new_music
+        
+    end
+
+    def preexisting_music
+
+    end
+
+    def clear_music
+
     end
 end
