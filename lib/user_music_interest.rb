@@ -1,5 +1,4 @@
-class userMusicInterest < ActiveRecord::Base
+class UserMusicInterest < ActiveRecord::Base
     belongs_to :user
-    has_many :music
-
+    belongs_to :music
 end
