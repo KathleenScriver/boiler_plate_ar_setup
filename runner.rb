@@ -1,6 +1,8 @@
 require_relative 'config/environment'
 
-Cli.new.start_game
+musically = Cli.new
 
+musically.welcome
 
+musically.main_menu
 

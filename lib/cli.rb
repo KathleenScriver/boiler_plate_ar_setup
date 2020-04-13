@@ -1,6 +1,16 @@
 class Cli
     attr_reader :current_user
 
+
+    def create_user_music_interest
+        if @current_user.user_music_interest == nil
+            @current_user.user_music_interest = User_music_interest.create(:user_id => @current_user.id)
+        end
+        @current_user.user_music_interest
+    end
+
+
+
     def saturn_image
 
         puts "
@@ -29,8 +39,9 @@ class Cli
         saturn_image
         puts "Please type in your username:"
         new_username = gets.strip
-        new_user = User.create({username: new_username})
-        @current_user = User.find_or_create_by(username: new_username)
+        new_user = User.create({name: new_username})
+        @current_user = User.find_or_create_by(name: new_username)
+        create_user_music_interest
 
         t = Time.now
         if t < noon
