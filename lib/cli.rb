@@ -1,4 +1,7 @@
-require_relative '/lib/api_methods'
+require_relative 'api_methods'
+require 'pry'
+require 'rest-client'
+require 'json'
 
 class Cli
     attr_reader :current_user
@@ -70,30 +73,43 @@ class Cli
         end
     end
 
-    def new_music
-        puts "Select Genre"
-        puts "#{genre_method.body}"
-        user_selection = gets.chomp
-        if user_selection == "#{genre_method.response}"
-            puts "Select Artist"
-            puts "#{artist_method.body}"
-            user_choice = gets.chomp
-            if user_choice == "#{artist_method.response}"
-                puts "#{song_method.body}"
-            end
-        end
+    # def new_music
+    #     puts "Select Genre"
+    #     puts "#{genre_method.body}"
+    #     user_selection = gets.chomp
+    #     if user_selection == "#{genre_method.response}"
+    #         puts "Select Artist"
+    #         puts "#{artist_method.body}"
+    #     end
+    # end
+            
+    #         def add_song
+    #         user_choice = gets.chomp
+    #         if user_choice == "#{artist_method.response}"
+    #             puts "#{song_method.body}"
+    #             if user_pick == "#{song_method.response}"
+    #                 add_song
+    #             end
+    #         end
         
-    end
+        
+    
 
     def add_song
 
     end
 
     def preexisting_music
-
+        music = @current_user.user_music_interest
+        pp music
+        if @current_user.user_music_interest == []
+            puts "It looks like you don't have any music interests.. Go to New Music to add some!"
+        end
+        main_menu
     end
-
     def clear_music
-
+        @current_user.user_music_interest.destroy!
+        main_menu
     end
+
 end

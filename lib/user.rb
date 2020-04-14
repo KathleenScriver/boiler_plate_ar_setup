@@ -1,4 +1,4 @@
 class User < ActiveRecord::Base
-    has_many :user_music_interests
-    has_many :music, through: :user_music_interests
+    has_many :playlists
+    has_many :music, through: :playlists
 end

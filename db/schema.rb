@@ -19,17 +19,17 @@ ActiveRecord::Schema.define(version: 2020_04_13_210109) do
     t.string "genre"
   end
 
-  create_table "user_music_interests", force: :cascade do |t|
+  create_table "playlist", force: :cascade do |t|
     t.integer "user_id"
     t.integer "music_id"
-    t.index ["music_id"], name: "index_user_music_interests_on_music_id"
-    t.index ["user_id"], name: "index_user_music_interests_on_user_id"
+    t.index ["music_id"], name: "index_playlist_on_music_id"
+    t.index ["user_id"], name: "index_playlist_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "name"
   end
 
-  add_foreign_key "user_music_interests", "musics"
-  add_foreign_key "user_music_interests", "users"
+  add_foreign_key "playlist", "musics"
+  add_foreign_key "playlist", "users"
 end
