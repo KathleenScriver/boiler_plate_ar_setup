@@ -1,3 +1,5 @@
+require_relative '/lib/api_methods'
+
 class Cli
     attr_reader :current_user
 
@@ -60,16 +62,31 @@ class Cli
 
         case selection
         when "New Music"
-            new_music
+             new_music
         when "Preexisting Music"
-            preexisting_music
+             preexisting_music
         when "Clear Music Tastes"
-            clear_music
+             clear_music
         end
     end
 
     def new_music
+        puts "Select Genre"
+        puts "#{genre_method.body}"
+        user_selection = gets.chomp
+        if user_selection == "#{genre_method.response}"
+            puts "Select Artist"
+            puts "#{artist_method.body}"
+            user_choice = gets.chomp
+            if user_choice == "#{artist_method.response}"
+                puts "#{song_method.body}"
+            end
+        end
         
+    end
+
+    def add_song
+
     end
 
     def preexisting_music
