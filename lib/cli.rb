@@ -81,6 +81,8 @@ class Cli
 
     def new_music
         select_genre
+        select_artist
+        select_song
         # if user_selection == "#{genre_method.response}"
         #     puts "Select Artist"
         #     puts "#{artist_method.body}"

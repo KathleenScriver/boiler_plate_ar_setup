@@ -18,6 +18,7 @@ def select_genre
    
     prompt = TTY::Prompt.new
     selection = prompt.select("Select Genre", genre_list)
+    
     "#{genre_list}"
     
     case selection
@@ -36,7 +37,7 @@ def select_artist
     #end
 end
 
-def song_method
+def select_song
     puts "Select Song"
 end
 
