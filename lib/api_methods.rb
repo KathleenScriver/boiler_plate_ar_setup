@@ -34,13 +34,16 @@ end
 
 
 
-def select_artist
-    puts "Select Artist"
-    #if user_genre == "genre"
+# def select_artist
+#     artist_list = MUSIC.map do |genre|
     
-    #artist_hash = JSON.parse(RestClient.get("https://developers.deezer.com/api/artist"))
-    #end
-end
+#     prompt = TTY::Prompt.new 
+#     selection = prompt.select("Select Artist", genre_list)
+#     #if user_genre == "genre"
+    
+#     #artist_hash = JSON.parse(RestClient.get("https://developers.deezer.com/api/artist"))
+#     #end
+# end
 
 def select_song
     puts "Select Song"
