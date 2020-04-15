@@ -19,7 +19,7 @@ def select_genre
     delete_list.each do |delete|
         genre_list.delete_at(genre_list.index(delete))
     end
-    binding.pry
+    #binding.pry
    
     prompt = TTY::Prompt.new 
     selection = prompt.select("Select Genre", genre_list)
@@ -35,14 +35,17 @@ end
 
 
 # def select_artist
-#     artist_list = MUSIC.map do |genre|
+#     artist_list = MUSIC.map do |artist|
+#         artists[]
+
+#     end
     
-#     prompt = TTY::Prompt.new 
-#     selection = prompt.select("Select Artist", genre_list)
-#     #if user_genre == "genre"
+    # prompt = TTY::Prompt.new 
+    # selection = prompt.select("Select Artist", artist_list)
+    #if user_genre == "genre"
     
-#     #artist_hash = JSON.parse(RestClient.get("https://developers.deezer.com/api/artist"))
-#     #end
+    #artist_hash = JSON.parse(RestClient.get("https://developers.deezer.com/api/artist"))
+    #end
 # end
 
 def select_song

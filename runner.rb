@@ -8,6 +8,7 @@ genre = Cli.new
 #musically.main_menu
 
 genre.new_music
+
 # binding.pry
 
 
