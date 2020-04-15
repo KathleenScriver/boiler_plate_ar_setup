@@ -2,20 +2,42 @@ require 'pry'
 require 'rest-client'
 require 'json'
 
-
-response = RestClient.get("https://api.deezer.com/user/2529/playlists")
-JSON.parse(response)
-#binding.pry
+# response = RestClient.get("https://api.deezer.com/genre")
+# JSON.parse(response)
 
 #genre  https://api.deezer.com/genre
-#playlists  https://api.deezer.com/user/2529/playlists
+#artists https://developers.deezer.com/api/artist
+#track https://developers.deezer.com/api/track 
 
 
-def genre_method
+def select_genre
+    genre_hash = JSON.parse(RestClient.get("https://api.deezer.com/genre"))
+    genre_array = genre_hash["data"]
+    genre_list = (genre_array.map {|i| i["name"]}).first(10)  
+    
+   
+    prompt = TTY::Prompt.new
+    selection = prompt.select("Select Genre", genre_list)
+    "#{genre_list}"
+    
+    case selection
+    when "#{genre_list}"
+         select_artist
+    end
 end
 
-def artist_method
+
+
+def select_artist
+    puts "Select Artist"
+    #if user_genre == "genre"
+    
+    #artist_hash = JSON.parse(RestClient.get("https://developers.deezer.com/api/artist"))
+    #end
 end
 
 def song_method
+    puts "Select Song"
 end
+
+#binding.pry

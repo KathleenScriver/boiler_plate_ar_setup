@@ -1,18 +1,20 @@
-require_relative 'api_methods'
+require_relative 'api_methods.rb'
 require 'pry'
 require 'rest-client'
 require 'json'
+require 'tty-prompt'
+
 
 class Cli
     attr_reader :current_user
 
 
-    def create_user_music_interest
-        if @current_user.user_music_interest == nil
-            @current_user.user_music_interest = User_music_interest.create(:user_id => @current_user.id)
-        end
-        @current_user.user_music_interest
-    end
+    # def create_user_music_interest
+    #     if @current_user.user_music_interest == nil
+    #         @current_user.user_music_interest = User_music_interest.create(:user_id => @current_user.id)
+    #     end
+    #     @current_user.user_music_interest
+    # end
 
 
 
@@ -46,7 +48,7 @@ class Cli
         new_username = gets.strip
         new_user = User.create({name: new_username})
         @current_user = User.find_or_create_by(name: new_username)
-        create_user_music_interest
+        # create_user_music_interest
 
         t = Time.now
         if t < noon
@@ -58,6 +60,7 @@ class Cli
         end
     end
 
+    
 
     def main_menu
         prompt = TTY::Prompt.new
@@ -72,16 +75,17 @@ class Cli
              clear_music
         end
     end
+    
 
-    # def new_music
-    #     puts "Select Genre"
-    #     puts "#{genre_method.body}"
-    #     user_selection = gets.chomp
-    #     if user_selection == "#{genre_method.response}"
-    #         puts "Select Artist"
-    #         puts "#{artist_method.body}"
-    #     end
-    # end
+    
+
+    def new_music
+        select_genre
+        # if user_selection == "#{genre_method.response}"
+        #     puts "Select Artist"
+        #     puts "#{artist_method.body}"
+        # end
+    end
             
     #         def add_song
     #         user_choice = gets.chomp
