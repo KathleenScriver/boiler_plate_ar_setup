@@ -1,4 +1,5 @@
 require_relative 'api_methods.rb'
+require_relative 'music.rb'
 require 'pry'
 require 'rest-client'
 require 'json'
