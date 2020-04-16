@@ -10,6 +10,7 @@ genre = Cli.new
 
 genre.new_music
 
+
 # binding.pry
 
 

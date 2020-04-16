@@ -1,84 +1,112 @@
 require 'pry'
 require 'rest-client'
 require 'json'
-require_relative 'music.rb'
-
-# response = RestClient.get("https://api.deezer.com/genre")
-# JSON.parse(response)
-
-#genre  https://api.deezer.com/genre
-#artists https://developers.deezer.com/api/artist
-#track https://developers.deezer.com/api/track 
 
 
-def select_genre
+
+    #binding.pry
+   def select_music
     genre_hash = JSON.parse(RestClient.get("https://api.deezer.com/genre"))
     genre_array = genre_hash["data"]
-   
     genre_list = (genre_array.map {|i| i["name"]}).first(10)
     delete_list = ["All", "Reggaeton", "Dance","Alternative", "Christian"]
     delete_list.each do |delete|
         genre_list.delete_at(genre_list.index(delete))
     end
-    #binding.pry
+
+    prompt_genre_pop = TTY::Prompt.new 
+    prompt_pop = TTY::Prompt.new 
+    selection = prompt_genre_pop.select("Select Genre", genre_list)
+    
+    
+    prompt_genre_rap_hip_hop = TTY::Prompt.new 
+    prompt_rap_hip_hop  = TTY::Prompt.new  
+  
+
+    prompt_genre_rock = TTY::Prompt.new 
+    prompt_rock  = TTY::Prompt.new  
+
+    prompt_genre_rnb = TTY::Prompt.new 
+    prompt_rnb = TTY::Prompt.new  
+
+    prompt_genre_electro = TTY::Prompt.new 
+    prompt_electro = TTY::Prompt.new  
    
-    prompt = TTY::Prompt.new 
-    selection = prompt.select("Select Genre", genre_list)
     
-    "#{genre_list}"
-    
+#"#{genre_list}"
     case selection
-    when "#{genre_list}"
-         select_artist
+    when "Pop"
+    prompt_pop.select("Select Artist", pop_artist_list)
+        puts "Select Artist"
+        pop_artist_list
+    when "Rap/Hip Hop"
+    prompt_genre_rap_hip_hop.select("Select Genre", genre_list[1])
+    prompt_rap_hip_hop.select("Select Artist", rap_hip_hop_artists_list)
+        rap_hip_hop_artists_list
+    when "Rock"
+    prompt_genre_rock.select("Select Genre", genre_list[2])
+    prompt_rock.select("Select Artist", rock_artists_list)
+    rock_artists_list
+    when "R&B"
+    prompt_genre_rock.select("Select Genre", genre_list[3])
+    prompt_rock.select("Select Artist", rnb_artists_list)
+    rnb_artists_list 
+    when "Electro"
+    prompt_genre_rock.select("Select Genre", genre_list[4])
+    prompt_rock.select("Select Artist", electro_artists_list)
+    electro_artists_list 
+    end
+   
+end
+
+def pop_artist_list
+    array = MUSIC[0][:pop_artists]
+    array.map do |songs|
+       #binding.pry
+    songs
+    end
+    
+end
+
+def rap_hip_hop_artists_list
+    array = MUSIC[2][:rap_hip_hop_artists]
+    array.map do |songs|
+       #binding.pry
+    songs
+    end
+end
+
+def rock_artists_list
+    array = MUSIC[4][:rock_artists]
+    array.map do |songs|
+       #binding.pry
+    songs
+    end
+end
+
+def rnb_artists_list
+    array = MUSIC[6][:rnb_artists]
+    array.map do |songs|
+       #binding.pry
+    songs
+    end
+end
+
+def electro_artists_list
+    array = MUSIC[8][:electro_artists]
+    array.map do |songs|
+       #binding.pry
+    songs
     end
 end
 
 
-
-def select_artist
-    #binding.pry
-    pop_artist_list = MUSIC[0][:pop_artists]
-    rap_hip_hop_artists_list = MUSIC[2][:rap_hip_hop_artists]
-    rock_artists_list = MUSIC[4][:rock_artists]
-    rnb_artists_list = MUSIC[6][:rnb_artists]
-    electro_artists_list = MUSIC[8][:electro_artists]
-   
-    all_artists = pop_artist_list, rap_hip_hop_artists_list, 
-    rock_artists_list, rnb_artists_list, electro_artists_list
-    
-    prompt = TTY::Prompt.new 
-    selection = prompt.select("Select Artist", pop_artist_list, rap_hip_hop_artists_list, 
-        rock_artists_list, rnb_artists_list, electro_artists_list)
-        
-        #"#{genre_list}"
-       # select_genre
-
-    case selection
-    when  "Pop" == TRUE then pop_artist_list
-         
-        select_song
-
-    # when rap_hip_hop_artists_list
-    #     rap_hip_hop_artists_list
-
-    # when rock_artists_list
-    #     rock_artists_list
-
-    # when rnb_artists_list
-    #     rnb_artists_list
-
-    # when electro_artists_list
-    #     electro_artists_list
- 
-    end
-    
-    
-    
-end
 
 def select_song
     puts "Select Song"
 end
+
+
 
 MUSIC = 
 [
@@ -120,5 +148,11 @@ MUSIC =
 {"Flux Pavilion" => ["Savage","I Can't Stop","Room to Fall"]},
 {"Diskord" => ["Beggers","U&I","Blood Brother"]}]}
 ]
+
+pop_artist_list = MUSIC[0][:pop_artists]
+    rap_hip_hop_artists_list = MUSIC[2][:rap_hip_hop_artists]
+    rock_artists_list = MUSIC[4][:rock_artists]
+    rnb_artists_list = MUSIC[6][:rnb_artists]
+    electro_artists_list = MUSIC[8][:electro_artists]
 
 #binding.pry

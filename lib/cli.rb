@@ -81,27 +81,15 @@ class Cli
     
 
     def new_music
-        select_genre
-        select_artist
-        select_song
-        # if user_selection == "#{genre_method.response}"
-        #     puts "Select Artist"
-        #     puts "#{artist_method.body}"
-        # end
+        #select_genre
+        select_music
+        #select_rap_hip_hop
+        #select_artist
+        # select_song
+       
     end
             
-    #         def add_song
-    #         user_choice = gets.chomp
-    #         if user_choice == "#{artist_method.response}"
-    #             puts "#{song_method.body}"
-    #             if user_pick == "#{song_method.response}"
-    #                 add_song
-    #             end
-    #         end
-        
-        
-    
-
+   
     def add_song
 
     end
