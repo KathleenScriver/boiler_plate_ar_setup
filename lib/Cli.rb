@@ -94,7 +94,6 @@ class Cli
         when "Dad"
             puts TTY::Box.frame(width: 90, height: 8, border: :thick) {pick_random_joke}
         end
-        #Add to favorites?
         want_more_jokes = tty_prompt.yes? "Would you like more?"
         want_more_jokes ? select_joke_type : exit_app
     end
@@ -111,3 +110,12 @@ class Cli
     end
 
 end
+
+        # add_to_favorites = tty_prompt.yes? "Add this to favorites?"
+        # add_to_favorites ? create_favorite : nil
+
+    # def create_favorite
+    #     Favorite.create user: self.user, joke: display_joke
+    #     want_more_jokes = tty_prompt.yes? "Would you like more?"
+    #     want_more_jokes ? select_joke_type : exit_app
+    # end
