@@ -1,4 +1,8 @@
 require 'pry'
+require_relative '../config/environment'
+
+old_logger = ActiveRecord::Base.logger
+ActiveRecord::Base.logger = nil
 
 class Cli
 
@@ -32,29 +36,41 @@ class Cli
 
         if @users_age.to_i >= 18
             @choice = prompt.select "Choose your joke type" do |menu|
-                menu.choice :Naughty, 1
-                menu.choice :Knock_Knock, 2
-                menu.choice :Dad, 3
+                menu.choice :Naughty, "Naughty"
+                menu.choice :Knock_Knock, "Knock_Knock"
+                menu.choice :Dad, "Dad"
             end
         else
             @choice = prompt.select "Choose your joke type" do |menu|
-                menu.choice :Knock_Knock, 2
-                menu.choice :Dad, 3
+                menu.choice :Knock_Knock, "Knock_Knock"
+                menu.choice :Dad, "Dad"
             end
         end
+    end
+
+    def all_jokes_of_selected_category
+        Joke.where(category: @choice)
+    end
+
+    def extract_content
+        all_jokes_of_selected_category.map {|joke| joke.content}
+    end
+
+    def pick_random_joke
+        i = rand(0..extract_content.length - 1)
+        extract_content[i]
     end
 
     def display_joke
         case @choice
-        when 1
-            puts "naughty"
-        when 2
-            puts "knock_knock"
-        when 3
-            puts "dad joke"
+        when "Naughty"
+            puts pick_random_joke
+        when "Knock_Knock"
+            puts pick_random_joke
+        when "Dad"
+            puts pick_random_joke
         end
     end
-
 
     def start_app
         welcome_screen
@@ -63,7 +79,6 @@ class Cli
         get_users_age
         select_joke_type
         display_joke
-        binding.pry
     end
 
 end
