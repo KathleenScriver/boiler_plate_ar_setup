@@ -33,8 +33,13 @@ class Cli
         else
             prompt.select("Choose your joke type", %w(Knock-Knock, Dad))
         end
-
     end
+
+    def display_joke
+    
+    end
+
+
 
     def start_app
         welcome_screen
