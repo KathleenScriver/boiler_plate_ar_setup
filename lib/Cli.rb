@@ -1,6 +1,13 @@
 class Cli
 
-    
+    def welcome_screen
+    puts "        ██╗  ██╗██╗   ██╗███╗   ███╗ ██████╗ ██████╗     ███╗   ███╗███████╗██╗
+        ██║  ██║██║   ██║████╗ ████║██╔═══██╗██╔══██╗    ████╗ ████║██╔════╝██║
+        ███████║██║   ██║██╔████╔██║██║   ██║██████╔╝    ██╔████╔██║█████╗  ██║
+        ██╔══██║██║   ██║██║╚██╔╝██║██║   ██║██╔══██╗    ██║╚██╔╝██║██╔══╝  ╚═╝
+        ██║  ██║╚██████╔╝██║ ╚═╝ ██║╚██████╔╝██║  ██║    ██║ ╚═╝ ██║███████╗██╗
+        ╚═╝  ╚═╝ ╚═════╝ ╚═╝     ╚═╝ ╚═════╝ ╚═╝  ╚═╝    ╚═╝     ╚═╝╚══════╝╚═╝" 
+    end
 
     def get_users_name
         puts "What is your name?"
@@ -13,14 +20,28 @@ class Cli
     end
     
     def get_users_age
+        puts "☺☺☺☺☺☺☺☺☺☺☺☺☺☺☺☺"
         puts "How old are you?"
         @users_age = gets.chomp
     end
 
+    def select_joke_type
+        prompt = TTY::Prompt.new
+
+        if @users_age.to_i >= 18
+            prompt.select("Choose your joke type", %w(Naughty, Knock-Knock, Dad))
+        else
+            prompt.select("Choose your joke type", %w(Knock-Knock, Dad))
+        end
+
+    end
+
     def start_app
+        welcome_screen
         get_users_name
         welcome_user
         get_users_age
+        select_joke_type
     end
 
 end
