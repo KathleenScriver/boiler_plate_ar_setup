@@ -8,7 +8,6 @@ gem "pry", "~> 0.12.2"
 
 gem "tty-box"
 gem "tty-prompt"
-
 gem "activerecord", "~> 6.0"
 gem "sinatra-activerecord", "~> 2.0"
 gem "rake", "~> 13.0"

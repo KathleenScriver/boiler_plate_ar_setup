@@ -10,10 +10,12 @@ user3 = User.create name: "Jessie", age: 28
 user4 = User.create name: "Amber", age: 25
 
 
-Joke.create name: "Squirrel Nuts", content: "Why does the squirrel swim on his back? To keep his nuts dry!", category: "Naughty"
-Joke.create name: "Needle", content: "Knock-Knock. Who's there? Needle. Needle who? Needle little help getting in!", category: "Knock_Knock"
-Joke.create name: "Candice", content: "Knock-Knock. Who's there? Candice. Candice who? Candice door open further? Its freezing out here!", category: "Knock_Knock"
-Joke.create name: "Pirates", content: "Why do pirates hate the alphabet? Because they get lost at C!", category: "Dad"
+Joke.create name: "Squirrel Nuts", content: "Why does the squirrel swim on his back?\n\nTo keep his nuts dry!", category: "Naughty"
+Joke.create name: "Chickpea", content: "What's the difference between a chickpea and a garbanzo bean?\n\nI've never payed to have a garbanzo bean on my face!", category: "Naughty"
+Joke.create name: "European", content: "If you’re American in the living room, what are you in the bathroom?\n\nEuropean.", category: "Naughty"
+Joke.create name: "Needle", content: "Knock-Knock.\n\nWho's there?\n\nNeedle.\n\nNeedle who?\n\nNeedle little help getting in!", category: "Knock_Knock"
+Joke.create name: "Candice", content: "Knock-Knock.\n\nWho's there?\n\nCandice.\n\nCandice who?\n\nCandice door open any further? Its freezing out here!", category: "Knock_Knock"
+Joke.create name: "Pirates", content: "Why do pirates hate the alphabet?\n\nBecause they get lost at C!", category: "Dad"
 Joke.create name: "Dad Jokes", content: "I like to tell dad jokes, and sometimes he laughs!", category: "Dad"
 
 # Favorite.create user: user3, joke: joke1
@@ -25,5 +27,5 @@ Joke.create name: "Dad Jokes", content: "I like to tell dad jokes, and sometimes
 
 
 
-binding.pry
-0
+# binding.pry
+# 0
