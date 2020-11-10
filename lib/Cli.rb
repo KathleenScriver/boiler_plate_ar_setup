@@ -1,3 +1,5 @@
+require 'pry'
+
 class Cli
 
     def welcome_screen
@@ -29,16 +31,29 @@ class Cli
         prompt = TTY::Prompt.new
 
         if @users_age.to_i >= 18
-            prompt.select("Choose your joke type", %w(Naughty, Knock-Knock, Dad))
+            @choice = prompt.select "Choose your joke type" do |menu|
+                menu.choice :Naughty, 1
+                menu.choice :Knock_Knock, 2
+                menu.choice :Dad, 3
+            end
         else
-            prompt.select("Choose your joke type", %w(Knock-Knock, Dad))
+            @choice = prompt.select "Choose your joke type" do |menu|
+                menu.choice :Knock_Knock, 2
+                menu.choice :Dad, 3
+            end
         end
     end
 
     def display_joke
-    
+        case @choice
+        when 1
+            puts "naughty"
+        when 2
+            puts "knock_knock"
+        when 3
+            puts "dad joke"
+        end
     end
-
 
 
     def start_app
@@ -47,6 +62,8 @@ class Cli
         welcome_user
         get_users_age
         select_joke_type
+        display_joke
+        binding.pry
     end
 
 end
