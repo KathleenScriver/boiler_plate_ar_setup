@@ -1,6 +1,16 @@
 require_relative 'config/environment'
+require_all 'lib'
 
-Cli.new.start_game
+musically = Cli.new
+genre = Cli.new
 
+#musically.welcome
+
+#musically.main_menu
+
+genre.new_music
+
+
+# binding.pry
 
 
